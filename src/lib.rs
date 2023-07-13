@@ -11,7 +11,8 @@ macro_rules! ts_to_litstr {
         arg.value()
     }};
 }
-
+/// Returns a `String` of the hash of type `$algo`.
+/// Only works with hash types implementing the `Digest` trait defined in [digest](https://crates.io/crates/digest)
 macro_rules! rscrypto_hash {
     ($algo:ty, $val:ident) => {{
         let data = $val.as_bytes();
