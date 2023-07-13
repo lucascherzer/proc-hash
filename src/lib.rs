@@ -17,10 +17,8 @@ macro_rules! rscrypto_hash {
         let data = $val.as_bytes();
         let mut hasher = <$algo>::new();
 
-        // write input message
         hasher.update(data);
 
-        // read hash digest and consume hasher
         let res = hasher.finalize();
         format!("{:x}", res)
     }};
@@ -61,27 +59,6 @@ pub fn include_blake512(item: TokenStream) -> TokenStream {
     };
     out.into()
 }
-// pub fn include_blake512(item: TokenStream) -> TokenStream {
-//     let val = ts_to_litstr!(item);
-//     let hash = {
-//         let data = val.as_bytes();
-//         let mut hasher = Blake2b512::new();
-
-//         // write input message
-//         hasher.update(data);
-
-//         // read hash digest and consume hasher
-//         let res = hasher.finalize();
-//         format!("{:x}", res)
-//     };
-//     let out = quote! {
-//         {
-//             const HASH: &str = #hash;
-//             HASH
-//         }
-//     };
-//     out.into()
-// }
 
 /// Takes a string and replaces it with it's Blake2b512 hash at compile time
 /// # Example
