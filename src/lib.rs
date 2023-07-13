@@ -1,6 +1,6 @@
 use blake2::{Blake2b512, Digest};
 use proc_macro::TokenStream;
-use quote::{quote, ToTokens};
+use quote::quote;
 use syn::LitStr;
 
 /// Simply converts a `TokenStream` to a `LitStr`
