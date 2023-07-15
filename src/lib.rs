@@ -3,6 +3,7 @@ use proc_macro::TokenStream;
 use quote::quote;
 use sha3::Sha3_512;
 use syn::LitStr;
+use whirlpool::Whirlpool;
 
 /// Simply converts a `TokenStream` to a `LitStr`
 macro_rules! ts_to_litstr {
@@ -68,6 +69,23 @@ pub fn include_blake512(item: TokenStream) -> TokenStream {
 pub fn include_sha3(item: TokenStream) -> TokenStream {
     let val = ts_to_litstr!(item);
     let hash = rscrypto_hash!(Sha3_512, val);
+
+    let out = quote! {
+        {
+            const HASH: &str = #hash;
+            HASH
+        }
+    };
+    out.into()
+}
+
+/// Takes a string and replaces it with it's [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_(hash_function)) hash at compile time
+/// # Example
+#[doc = docify::embed_run!("tests/md5.rs", test_md5)]
+#[proc_macro]
+pub fn include_whirlpool(item: TokenStream) -> TokenStream {
+    let val = ts_to_litstr!(item);
+    let hash = rscrypto_hash!(Whirlpool, val);
 
     let out = quote! {
         {
