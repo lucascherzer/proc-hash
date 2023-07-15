@@ -1,4 +1,4 @@
-use blake2::{Blake2b512, Blake2s, Digest};
+use blake2::{Blake2b512, Digest};
 use proc_macro::TokenStream;
 use quote::quote;
 use sha3::Sha3_512;
