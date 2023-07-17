@@ -2,6 +2,11 @@
 name = "proc-hash"
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE"
+description = "Embed hashed strings at compile time"
+repository = "https://github.com/lucascherzer/proc-hash"
+categories = ["development-tools::build-utils"]
+keywords = ["hash", "macro"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
