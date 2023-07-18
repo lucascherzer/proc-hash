@@ -30,7 +30,7 @@ macro_rules! rscrypto_hash {
 /// # Example
 #[doc = docify::embed_run!("tests/md5.rs", test_md5)]
 /// # Security Warning
-/// MD5 [should be considered cryptographically broken](https://www.kb.cert.org/uls/id/836068) and be avoided for security critical
+/// MD5 [should be considered cryptographically broken](https://www.kb.cert.org/vuls/id/836068) and be avoided for security critical
 /// applications if possible.
 #[proc_macro]
 pub fn include_md5(item: TokenStream) -> TokenStream {
