@@ -26,7 +26,7 @@ macro_rules! rscrypto_hash {
     }};
 }
 
-/// Takes a string and replaces it with it's MD5 hash at compile time
+/// Takes a string and replaces it with it's [MD5](https://en.wikipedia.org/wiki/MD5) hash at compile time
 /// # Example
 #[doc = docify::embed_run!("tests/md5.rs", test_md5)]
 /// # Security Warning
@@ -46,7 +46,7 @@ pub fn include_md5(item: TokenStream) -> TokenStream {
     out.into()
 }
 
-/// Takes a string and replaces it with it's Blake2b512 hash at compile time
+/// Takes a string and replaces it with it's [Blake2b512](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE2) hash at compile time
 /// # Example
 #[doc = docify::embed_run!("tests/blake512.rs", test_blake512)]
 #[proc_macro]
@@ -62,9 +62,9 @@ pub fn include_blake512(item: TokenStream) -> TokenStream {
     out.into()
 }
 
-/// Takes a string and replaces it with it's Blake2b512 hash at compile time
+/// Takes a string and replaces it with it's [SHA-3](https://en.wikipedia.org/wiki/SHA-3) hash at compile time
 /// # Example
-#[doc = docify::embed_run!("tests/blake512.rs", test_blake512)]
+#[doc = docify::embed_run!("tests/sha3.rs", test_sha3)]
 #[proc_macro]
 pub fn include_sha3(item: TokenStream) -> TokenStream {
     let val = ts_to_litstr!(item);
@@ -81,7 +81,7 @@ pub fn include_sha3(item: TokenStream) -> TokenStream {
 
 /// Takes a string and replaces it with it's [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_(hash_function)) hash at compile time
 /// # Example
-#[doc = docify::embed_run!("tests/md5.rs", test_md5)]
+#[doc = docify::embed_run!("tests/whirlpool.rs", test_whirlpool)]
 #[proc_macro]
 pub fn include_whirlpool(item: TokenStream) -> TokenStream {
     let val = ts_to_litstr!(item);
