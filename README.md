@@ -5,6 +5,7 @@
 ## Implemented Hashing Algorithms
 - MD5
 - BLAKE2b (512 bit)
+- BLAKE2s (256 bit)
 - SHA-3
 - Whirlpool
 
