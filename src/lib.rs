@@ -1,4 +1,4 @@
-use blake2::{Blake2b512, Digest};
+use blake2::{Blake2b512, Blake2s256, Digest};
 use proc_macro::TokenStream;
 use quote::quote;
 use sha3::Sha3_512;
@@ -37,6 +37,22 @@ pub fn include_md5(item: TokenStream) -> TokenStream {
     let val = ts_to_litstr!(item);
     let hash = md5::compute(val);
     let hash = format!("{:x}", hash);
+    let out = quote! {
+        {
+            const HASH: &str = #hash;
+            HASH
+        }
+    };
+    out.into()
+}
+
+/// Takes a string and replaces it with it's [Blake2s256](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE2) hash at compile time
+/// # Example
+#[doc = docify::embed_run!("tests/blake512.rs", test_blake512)]
+#[proc_macro]
+pub fn include_blake256(item: TokenStream) -> TokenStream {
+    let val = ts_to_litstr!(item);
+    let hash = rscrypto_hash!(Blake2s256, val);
     let out = quote! {
         {
             const HASH: &str = #hash;
